@@ -61,12 +61,12 @@
             "properties": {
                 "codemap.textMode": {
                     "type": "boolean",
-                    "default": true,
+                    "default": false,
                     "description": "Show tree view with un-expendable nodes for better user experience."
                 },
                 "codemap.textModeExpanded": {
                     "type": "boolean",
-                    "default": true,
+                    "default": false,
                     "description": "Show expanded child items."
                 },
                 "codemap.maxNestingLevel": {
@@ -232,7 +232,12 @@
                     ],
                     "markdownDescription": "Specifies where to show the _CodeMap_ view",
                     "scope": "window"
-                }
+                },
+                "codemap.tal": {
+                    "type": "string",
+                    "default": "./mapper_tal.js",
+                    "description": "Dedicated mapper for HPE NonStop TAL syntax."
+                }                
             }
         },
         "commands": [
