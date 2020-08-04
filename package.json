@@ -2,7 +2,7 @@
     "name": "codemap",
     "displayName": "CodeMap",
     "description": "Interactive code map for quick visualization and navigation within code DOM objects (e.g. classes, members).",
-    "version": "1.11.1",
+    "version": "1.14.0",
     "license": "MIT",
     "publisher": "oleg-shilo",
     "engines": {
@@ -68,6 +68,11 @@
                     "type": "boolean",
                     "default": false,
                     "description": "Show expanded child items."
+                },
+                "codemap.autoReveal": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Automatically reveal code from current document position in the tree view on position change."
                 },
                 "codemap.maxNestingLevel": {
                     "type": "number",
@@ -246,6 +251,14 @@
                 "title": "CodeMap: Navigate to selected member"
             },
             {
+                "command": "codemap.reveal",
+                "title": "CodeMap: Reveal code from current document position in the tree view",
+                "icon": {
+                    "light": "resources/light/arrow-both.svg",
+                    "dark": "resources/dark/arrow-both.svg"
+                }
+            },
+            {
                 "command": "codemap.mappers",
                 "title": "CodeMap: Show mappers configuration"
             },
@@ -256,12 +269,40 @@
                     "light": "resources/light/refresh.svg",
                     "dark": "resources/dark/refresh.svg"
                 }
+            },
+            {
+                "command": "codemap.quick_pick",
+                "title": "CodeMap: Quick pick",
+                "icon": {
+                    "light": "resources/light/pick.svg",
+                    "dark": "resources/dark/pick.svg"
+                }
+            }
+        ],
+        "keybindings": [
+            {
+                "key": "alt+p",
+                "command": "codemap.quick_pick"
+            },
+            {
+                "key": "alt+l",
+                "command": "codemap.reveal"
             }
         ],
         "menus": {
             "view/title": [
                 {
                     "command": "codemap.refresh",
+                    "when": "view == codemap-own-view || view == codemap-explorer-view",
+                    "group": "navigation@2"
+                },
+                {
+                    "command": "codemap.reveal",
+                    "when": "(view == codemap-own-view || view == codemap-explorer-view) && config.autoReveal == false",
+                    "group": "navigation@2"
+                },
+                {
+                    "command": "codemap.quick_pick",
                     "when": "view == codemap-own-view || view == codemap-explorer-view",
                     "group": "navigation@2"
                 }
@@ -288,8 +329,8 @@
         "@types/mocha": "^7.0.2",
         "@types/node": "^13.11.0",
         "eslint": "^6.8.0",
-        "@typescript-eslint/parser": "^2.26.0",
-        "@typescript-eslint/eslint-plugin": "^2.26.0",
+        "@typescript-eslint/parser": "^3.6.1",
+        "@typescript-eslint/eslint-plugin": "^3.6.1",
         "glob": "^7.1.6",
         "mocha": "^7.1.1",
         "typescript": "^3.8.3",

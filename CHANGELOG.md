@@ -1,5 +1,30 @@
 # Change Log
 
+## 1.12.1 (24 May 2020)
+
+* Added icons to "Quick Pick" list
+
+## 1.14.0 (21 July 2020)
+
+* Added support for Blazor/Razor (.razor) syntax.
+* Added an option for automatically invoking "Reveal In Tree" on caret position change.
+
+## 1.13.0 (29 May 2020)
+
+* Implemented Reveal In Tree (Alt+L) for revealing the tree view node that corresponds to code at the current position in the document.
+  * Issue #29: Show current location of cursor in file
+
+## 1.12.0 (22 May 2020)
+
+* Implemented Quick Pick (Alt+P) for simple search/filter mapitems
+  * Issue #36: add search or filter?
+  * Issue #31: Feature proposal - Document Symbol
+
+## 1.11.2
+
+* Issue #33: Codemap generic mapper does not work with UTF-16 encoded files.
+Changed (from reading doc content from the file) to reading the doc content from the text editor buffer. So no dependency on the file encoding.
+
 ## 1.11.1
 
 * Issue #34: Refresh button is missing
